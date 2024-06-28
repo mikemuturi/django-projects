@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<body>
+    <h2>Admin Page</h2>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>IsActive</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.isActive }}</td>
+            <td>{{ user.age }}</td>
+            <td>
+                <form action="{% url 'update_is_active' user.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Toggle Active</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'download_csv' %}">Download CSV</a>
+</body>
+</html>
