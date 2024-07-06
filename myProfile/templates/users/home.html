@@ -1,0 +1,7 @@
+<!-- users/templates/users/home.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Welcome, {{ user.username }}</h1>
+  <a href="{% url 'profile' %}">Update Profile</a>
+{% endblock %}

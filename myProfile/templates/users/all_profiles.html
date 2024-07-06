@@ -1,0 +1,16 @@
+<!-- users/templates/users/all_profiles.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>All Profiles</h2>
+  <div>
+    {% for profile in profiles %}
+      <div>
+        <a href="{% url 'public_profile' profile.user.username %}">
+          <img src="{{ profile.profile_pic.url }}" alt="Profile Picture">
+          <p>{{ profile.user.first_name }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

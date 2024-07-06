@@ -1,0 +1,10 @@
+<!-- users/templates/users/public_profile.html -->
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>{{ user.username }}'s Profile</h2>
+  <img src="{{ user.userprofile.profile_pic.url }}" alt="Profile Picture">
+  <p>Phone: {{ user.userprofile.phone }}</p>
+  <p>Gender: {{ user.userprofile.gender }}</p>
+  <p>Professional: {{ user.userprofile.professional }}</p>
+{% endblock %}
