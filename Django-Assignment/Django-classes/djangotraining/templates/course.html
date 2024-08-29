@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block title %}    
+    <title>Courses Page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+    {% endblock title %}
+
+
+
+ 
+ {% block body %} 
+
+
+    <!-- Category Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Subjects</h5>
+                <h1>Explore Top Subjects</h1>
+            </div>
+            <div class="row">
+                
+                
+                {% if allsubjects %}
+                    
+
+                {% for subject in allsubjects %}
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                    <img class="img-fluid" src="{{ subject.subjectImage.url}}" alt="{{subject.subjectname}}">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">{{subject.subjectname}}</h4>
+                            <span>{{subject.course_count}} Course(s)</span>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                    <p>No Subject at the moment</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Category Start -->
+
+
+    <!-- Courses Start -->
+    <!-- Courses Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Courses</h5>
+                <h1>Our Popular Courses</h1>
+            </div>
+            <div class="row">
+                {% if allcourses %}
+                {% for course in allcourses  %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="rounded overflow-hidden mb-2">
+                        <img class="img-fluid" src="{{ course.courseImage.url}}" alt="{{course.courseName}}">
+                        <div class="bg-secondary p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-users text-primary mr-2"></i>25 Students</small>
+                                <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>{{course.courseDuration}}</small>
+                            </div>
+                            <a class="h5" href="">{{course.courseName}}</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">Ksh.{{course.coursePrice|intcomma}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %} 
+                {% else %}
+                <p>No Courses at the moment Please Come Back Later</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+
+    <!-- Courses End -->
+    {% endblock body %}
